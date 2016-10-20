@@ -17,15 +17,15 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 define( 'DAT_PLUGIN_URL', plugin_dir_url(__FILE__) );
-$divi_auto_title_js = 'divi-auto-title.js';
-if (defined('WP_DEBUG') && true === WP_DEBUG) {
-    $divi_auto_title_js = 'divi-auto-title.min.js';
-}
 
 /*
  * Custom CSS and JS
  */
 function dat_enqueue_plugin_scripts() {
+    $divi_auto_title_js = 'divi-auto-title.min.js';
+    if (defined('WP_DEBUG') && true === WP_DEBUG) {
+        $divi_auto_title_js = 'divi-auto-title.js';
+    }
     wp_enqueue_script( 'divi-auto-title', DAT_PLUGIN_URL . 'js/' . $divi_auto_title_js );
 }
 add_action( 'admin_enqueue_scripts', 'dat_enqueue_plugin_scripts' );
